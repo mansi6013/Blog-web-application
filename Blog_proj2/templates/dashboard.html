@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Blogs</h1>
+<a href="{{ url_for('create_blog') }}">Create New Blog</a>
+<div class="blogs">
+    {% for blog in blogs %}
+        <div class="blog">
+            <h2>{{ blog.title }}</h2>
+            <a href="{{ url_for('edit_blog', blog_id=blog['_id']) }}">Edit</a>
+            <form action="{{ url_for('delete_blog', blog_id=blog['_id']) }}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

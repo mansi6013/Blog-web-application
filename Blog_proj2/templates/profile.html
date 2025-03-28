@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Profile</h1>
+
+<div class="profile-container">
+    <h2>Welcome, {{ user['username'] }}!</h2>
+    <p><strong>Full Name:</strong> {{ user['full_name'] }}</p>
+    <p><strong>Email:</strong> {{ user['email'] }}</p>
+    <p><strong>Bio:</strong> {{ user.get('bio', 'No bio available') }}</p>
+
+    <div class="profile-actions">
+        <a href="{{ url_for('edit_profile') }}" class="btn">Edit Profile</a>
+        <a href="{{ url_for('homepage') }}" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

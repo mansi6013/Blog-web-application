@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Blogs</h1>
+
+<div class="blogs">
+    {% for blog in blogs %}
+        <div class="blog">
+            <h2>{{ blog.title }}</h2>
+            <p>{{ blog.content }}</p>
+            <p>Author: {{ blog.author }}</p>
+            <a href="{{ url_for('view_blog', blog_id=blog['id']) }}">Read More</a>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Profile Option for Logged-in Users -->
+{% if 'user_id' in session %}
+    <div class="profile-link">
+        <a href="{{ url_for('profile') }}" class="btn">Go to Your Profile</a>
+    </div>
+{% endif %}
+{% endblock %}
